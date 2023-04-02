@@ -1,5 +1,7 @@
 import '@/styles/globals.css'
+import Footer from './Footer'
 
 export default function App({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  return (<div><Component {...pageProps} />
+  <Footer/></div>)
 }

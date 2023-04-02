@@ -93,8 +93,9 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+    background: url('/static/background.png');
 }
-
+ 
 a {
   color: inherit;
   text-decoration: none;

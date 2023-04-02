@@ -1,3 +1,6 @@
+.container {
+  margin-bottom: 14rem /* 224px */;
+}
 .main {
   display: flex;
   flex-direction: column;
