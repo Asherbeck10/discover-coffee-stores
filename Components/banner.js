@@ -8,7 +8,7 @@ const Banner =(props)=> {
         <span className={Styles.title1}>Coffee</span> 
         <span className={Styles.title2}>Connoisseur</span>
         </h1>
-      <p>Discover your local coffee shop! </p>
+      <p className={Styles.subTitle}>Discover your local coffee shop! </p>
       <div className={Styles.buttonWrapper }>
       <button className={Styles.button} onClick={props.handelOnClick}>{props.buttonText}</button>
       </div>
