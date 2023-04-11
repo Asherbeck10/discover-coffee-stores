@@ -10,14 +10,16 @@ import cls from "classnames"
 export async function getStaticProps(staticProps) {
   const coffeeStores= await fetchCoffeeStores()
     const params=staticProps.params
+    const findCoffeeStoreById=coffeeStores.find((coffeeStore)=>{
+      return coffeeStore.id.toString()===params.id;
+    })
     return {
       props: {
-        coffeeStore:coffeeStores.find((coffeeStore)=>{
-            return coffeeStore.id.toString()===params.id;
-        })
-      }, // will be passed to the page component as props
+        coffeeStore:findCoffeeStoreById ? findCoffeeStoreById : {},
+        },
+      } 
     }
-  }
+  
   export async function getStaticPaths() {
     const coffeeStores= await fetchCoffeeStores()
     const paths=coffeeStores.map(coffeeStore=>{
@@ -52,7 +54,7 @@ const CoffeeStore=(props)=>{
     <div className={styles.col1}>
         <div className={styles.backToHomeLink}>
     <Link href='/'>
-        Back To Home
+    🚗   Back To Home
     </Link>
     </div>
     <div className={styles.nameWrapper}>
