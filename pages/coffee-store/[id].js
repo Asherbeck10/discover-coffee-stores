@@ -43,11 +43,12 @@ const CoffeeStore = (initialProps) => {
   const router = useRouter();
 
   
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  
   const id = router.query.id;
-  const [coffeeStore, setCoffeeStore] = useState(initialProps.coffeeStore);
+  const [coffeeStore, setCoffeeStore] = useState(
+    initialProps.coffeeStore || {}
+  );
+  
   const {
     state: {coffeeStores},
   } = useContext(StoreContext);
@@ -55,7 +56,7 @@ const CoffeeStore = (initialProps) => {
 const handleCreateCoffeeStore=async(coffeeStore)=>{
   try{
     const {
-      id,name,voting,imgUrl,neighbourhood,address
+      id,name,imgUrl,neighbourhood,address
     }=coffeeStore;
     const response=await fetch ('/api/createCoffeeStore',{
     method: "POST", 
@@ -96,8 +97,14 @@ const handleCreateCoffeeStore=async(coffeeStore)=>{
     }else{
       handleCreateCoffeeStore(initialProps.coffeeStore);
     }
-  },[id,initialProps,initialProps.CoffeeStore]);
-  const { name, address, neighbourhood, imgUrl } = coffeeStore;
+  },[id, initialProps, initialProps.coffeeStore, coffeeStores]);
+
+  const {
+    address = "",
+    name = "",
+    neighbourhood = "",
+    imgUrl = "",
+  } = coffeeStore;
 
   const[votingCount,setVotingCount]=useState(0);
   const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -112,7 +119,9 @@ const handleCreateCoffeeStore=async(coffeeStore)=>{
     }
   },[data])
 
-  
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
   
   const handleUpvoteButton = async() => {
     
@@ -169,7 +178,7 @@ const handleCreateCoffeeStore=async(coffeeStore)=>{
             width="600"
             height="360"
             className={styles.storeImg}
-            alt=""
+            alt="banner Image"
           ></Image>
         </div>
         <div className={cls("glass", styles.col2)}>

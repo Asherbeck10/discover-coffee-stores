@@ -31,7 +31,7 @@ export default function Home(props) {
  
   
   useEffect(() => {
-    async function setCoffeeStoresByLocation() {
+    const setCoffeeStoresByLocation=async()=>{
       
           if (latLong) {
             try{
