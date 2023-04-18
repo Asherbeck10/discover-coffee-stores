@@ -160,6 +160,7 @@ const handleCreateCoffeeStore=async(coffeeStore)=>{
   return (
     <div className={styles.layout}>
       <Head>
+      <meta name="description" content={`${name} coffee store`}></meta>
         <title>{name}</title>
       </Head>
       <div className={styles.container}>
