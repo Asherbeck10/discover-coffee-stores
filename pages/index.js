@@ -2,7 +2,7 @@ import Head from "next/head";
 import Banner from '../Components/banner'
 import Image from 'next/image'
 import Card from '../Components/card'
-// import coffeeStoresData from '../data/coffee-stores.json'
+
 import styles from "../styles/Home.module.css";
 import fetchCoffeeStores from "../lib/coffee-stores";
 import  useTrackLocation from '../hooks/use-track-location'
@@ -13,18 +13,18 @@ export async function getStaticProps(context) {
   const coffeeStores= await fetchCoffeeStores()
   
     
-    // .catch(err => console.error(err));
+   
   return {
     props: {
       coffeeStores,
-    }, // will be passed to the page component as props
+    }, 
   }
 }
 
 export default function Home(props) {
 
   const {locationErrorMsg,handleTrackLocation, isFindingLocation}=useTrackLocation()
-  // const [coffeeStores,setCoffeeStores]=useState("")
+  
   const [coffeeStoresError,setCoffeeStoresError]=useState(null)
   const {dispatch,state}=useContext(StoreContext)
   const {coffeeStores,latLong}=state
@@ -42,7 +42,7 @@ export default function Home(props) {
                 payload:{coffeeStores,}
               })
               setCoffeeStoresError("")
-              // setCoffeeStores(fetchCoffeeStoresData)
+             
               
               }
               catch(error){ 
